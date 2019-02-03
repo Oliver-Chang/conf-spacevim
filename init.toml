@@ -28,9 +28,6 @@
     vim_help_language = "cn"
 
 [[layers]]
-name = "chinese"
-
-[[layers]]
 name = "denite"
 
 [[layers]]
