@@ -24,20 +24,17 @@
     enable_tabline_filetype_icon = true
     enable_statusline_display_mode = false
     default_indent = 8
-
-# Enable autocomplete layer
-[[layers]]
-name = 'autocomplete'
-auto-completion-return-key-behavior = "complete"
-auto-completion-tab-key-behavior = "smart"
+    # layer chinese opt for enable chinese docs
+    vim_help_language = "cn"
 
 [[layers]]
-name = 'shell'
-default_position = 'bottom'
-default_height = 30
+name = "chinese"
 
 [[layers]]
-name = 'denite'
+name = "denite"
+
+[[layers]]
+name = "colorscheme"
 
 [[layers]]
 name = 'github'
@@ -46,32 +43,40 @@ name = 'github'
 name = 'git'
 
 [[layers]]
+name = "VersionControl"
+
+[[layers]]
 name = 'tags'
 
 [[layers]]
 name = 'cscope'
 
+[[layers]]
+name = "format"
+
+[[layers]]
+name = 'shell'
+default_position = 'bottom'
+default_height = 20
 
 [[layers]]
 name = 'lang#markdown'
 enableWcwidth = 1
 listItemIndent = 1
 
-
 [[layers]]
 name = "lang#python"
 
 [[layers]]
-name = "lang#java"
-
-[[layers]]
 name = "lang#c"
-c = 'c11'
-
 
 [[layers]]
-name = "ctrlp"
+name = "lang#go"
 
-
-[[custom_plugins]]
-name="dgryski/vim-godef"
+[[layers]]
+name = "lsp"
+filetypes = [
+    "python",
+    "go",
+    "c"
+]
