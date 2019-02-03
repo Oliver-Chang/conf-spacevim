@@ -77,6 +77,5 @@ name = "lang#go"
 name = "lsp"
 filetypes = [
     "python",
-    "go",
-    "c"
+    "go"
 ]
