@@ -1,0 +1,9 @@
+version: '3'
+services:
+  nvim:
+    image: oliverchangnt/dnvim:latest
+    container_name: nvim
+    restart: always
+    volumes:
+      - "/home/ubuntu/Workspace:/home/spacevim/Workspace"
+

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+hdir=`pwd`
+file=$1
+ddir=${hdir#*Workspace/}
+
+
+docker exec -it nvim nvim $ddir/$file
