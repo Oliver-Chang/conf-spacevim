@@ -52,7 +52,14 @@ RUN curl https://raw.githubusercontent.com/Oliver-Chang/conf-spacevim/master/ini
 RUN nvim --headless +'call dein#install()' +qall
 RUN nvim --headless +'GoInstallBinaries' +qall
 
+USER root
+RUN apt-get install -y libssl1.0.0 pkg-config
+RUN wget https://github.com/neo4j-drivers/seabolt/releases/download/v1.7.0/seabolt-1.7.0-Linux-Ubuntu-Xenial.deb
+RUN apt-get install -y ./seabolt-1.7.0-Linux-Ubuntu-Xenial.deb
+RUN apt-get install -y golang-glide 
+
+User oliver
+COPY entrypoint.sh $HOME/entrypoint.sh
 WORKDIR $HOME/Workspace
 ENV WORKSPACE=$HOME/Workspace
-COPY entrypoint.sh $HOME/entrypoint.sh
 ENTRYPOINT ["../entrypoint.sh"]
