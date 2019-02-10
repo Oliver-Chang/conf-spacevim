@@ -21,17 +21,18 @@ RUN apt-get install -y neovim \
             golang \
             neovim \
             cscope \
-            ctags 
+            ctags \
+            gosu
 
 RUN apt-get clean all    
 
 
-ENV HOME "/home/spacevim"
+ENV HOME "/home/oliver"
 
-RUN groupdel users && groupadd -r spacevim 
-RUN useradd --create-home --home-dir $HOME -r -g spacevim spacevim
+RUN groupdel users && groupadd -r oliver
+RUN useradd --create-home --home-dir $HOME -r -g oliver oliver -u 1000
 
-USER spacevim
+USER oliver
 
 
 WORKDIR $HOME
@@ -45,10 +46,13 @@ RUN go get -u github.com/sourcegraph/go-langserver
 
 RUN curl -sLf https://spacevim.org/install.sh | bash
 
-# RUN echo "create config file"
 RUN mkdir -p $HOME/.SpaceVim.d/
+RUN mkdir -p $HOME/Workspace
 RUN curl https://raw.githubusercontent.com/Oliver-Chang/conf-spacevim/master/init.toml -o $HOME/.SpaceVim.d/init.toml  
 RUN nvim --headless +'call dein#install()' +qall
 RUN nvim --headless +'GoInstallBinaries' +qall
 
-ENTRYPOINT ["nvim"]
+WORKDIR $HOME/Workspace
+ENV WORKSPACE=$HOME/Workspace
+COPY entrypoint.sh $HOME/entrypoint.sh
+ENTRYPOINT ["../entrypoint.sh"]

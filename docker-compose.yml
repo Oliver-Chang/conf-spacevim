@@ -2,8 +2,11 @@ version: '3'
 services:
   nvim:
     image: oliverchangnt/dnvim:latest
+    environment: 
+      - USERID=1000
+      - UID=1000
+      - GID=1000
     container_name: nvim
     restart: always
     volumes:
-      - "/home/ubuntu/Workspace:/home/spacevim/Workspace"
-
+      - "/home/oliver/Workspace:/home/oliver/Workspace:Z"
