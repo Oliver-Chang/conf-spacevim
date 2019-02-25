@@ -4,5 +4,4 @@ hdir=`pwd`
 file=$1
 ddir=${hdir#*Workspace/}
 
-
-docker exec -it nvim nvim $ddir/$file
+docker exec -it -e GOPATH=$GOPATH -e GO111MODULE=$GO111MODULE nvim nvim $ddir/$file

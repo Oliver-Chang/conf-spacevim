@@ -38,8 +38,8 @@ USER oliver
 WORKDIR $HOME
 
 ENV GOPATH="${HOME}/go"
-ENV PATH="${HOME}/.local/bin:${PATH}"
-ENV PATH="${GOPATH}/bin:${PATH}"
+ENV PATH="$HOME/.local/bin:$PATH"
+ENV PATH="$HOME/go/bin:$PATH"
 
 RUN pip3 install --user neovim python-language-server
 RUN go get -u github.com/sourcegraph/go-langserver
@@ -53,7 +53,7 @@ RUN nvim --headless +'call dein#install()' +qall
 RUN nvim --headless +'GoInstallBinaries' +qall
 
 USER root
-RUN apt-get install -y libssl1.0.0 pkg-config
+RUN apt-get install -y libssl1.0.0 pkg-config libssl-dev
 RUN wget https://github.com/neo4j-drivers/seabolt/releases/download/v1.7.0/seabolt-1.7.0-Linux-Ubuntu-Xenial.deb
 RUN apt-get install -y ./seabolt-1.7.0-Linux-Ubuntu-Xenial.deb
 RUN apt-get install -y golang-glide 

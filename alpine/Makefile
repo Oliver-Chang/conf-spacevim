@@ -1,5 +1,5 @@
 NS ?= oliver
-VERSION ?= latest
+VERSION ?= latest-alpine
 IMAGE_NAME ?= dnvim
 
 .PHONY: build push release

@@ -8,7 +8,7 @@ ENV TERM screen-256color
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 RUN apk --update add --no-cache make zsh fontconfig mkfontdir mkfontscale \
             go \
-            python2 python2-dev py2-pip python3 python3-dev libc-dev \
+            python3 python3-dev libc-dev \
             nodejs npm curl \
             clang \
             neovim git
@@ -28,7 +28,6 @@ ENV PATH="${HOME}/.local/bin:${PATH}"
 ENV PATH="${GOPATH}/bin:${PATH}"
 
 RUN pip3 install --user neovim python-language-server typing
-RUN pip2 install --user neovim 
 RUN go get -u github.com/sourcegraph/go-langserver
 
 # RUN echo "create config file"
