@@ -1,4 +1,4 @@
 #!/bin/bash
 
-chown -R $PUID:$PGID $WORKDIR
+chown -R $PUID:$PGID $WORKSPACE
 nvim
